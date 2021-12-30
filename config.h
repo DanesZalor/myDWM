@@ -1,9 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int cornerrad = 5;
+static const unsigned int cornerrad = 4;
 static const unsigned int gappih    = 10;
 static const unsigned int gappiv    = 10;
 static const unsigned int gappoh    = 20;
@@ -20,8 +20,8 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#002b36";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray3, col_gray1, "#043b54" },
+	[SchemeSel]  = { col_gray4, col_cyan,  "#00a2ed" },
 };
 
 /* tagging */
@@ -69,23 +69,30 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                XK_Return, spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = -1 } },
+
+	// focus
+	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
+	{ MODKEY,			XK_Tab,	   focusstack,	   {.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_Tab,	   zoom,	   {0}},
+
 	{ MODKEY|ShiftMask,             XK_Up,     incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incnmaster,     {.i = -1 } },
+
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Tab,    zoom,           {0} },
+
+	//{ MODKEY,                       XK_Tab,    zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
         { MODKEY,                       XK_space,  fullscreen,     {0} },
-	{ MODKEY|ShiftMask,             XK_i,  	   setlayout,      {0} },
+	//{ MODKEY|ShiftMask,             XK_i,  	   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	//{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
     // gaps
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
 	{ MODKEY,			XK_equal,  incrigaps,      {.i = +5 }},

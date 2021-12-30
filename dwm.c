@@ -1645,7 +1645,7 @@ incrigaps(const Arg *arg)
 	setgaps(
 		selmon->gappoh,
 		selmon->gappov,
-		selmon->gappih + arg->i,
+		selmon->gappih + arg->i, 
 		selmon->gappiv + arg->i
 	);
 }
@@ -1654,8 +1654,8 @@ void
 incrogaps(const Arg *arg)
 {
 	setgaps(
-		MAX(selmon->gappoh + arg->i, selmon->gappih),
-		MAX(selmon->gappov + arg->i, selmon->gappiv),
+		selmon->gappoh + arg->i,
+		selmon->gappov + arg->i,
 		selmon->gappih,
 		selmon->gappiv
 	);
