@@ -1,14 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int cornerrad = 5;
-static const unsigned int gappih    = 25;
-static const unsigned int gappiv    = 25;
-static const unsigned int gappoh    = 25;
-static const unsigned int gappov    = 25;
-static const int smartgaps          = 1;
+static const unsigned int gappih    = 10;
+static const unsigned int gappiv    = 10;
+static const unsigned int gappoh    = 20;
+static const unsigned int gappov    = 20;
+static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Source Code Pro:size=14" };
@@ -78,7 +78,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
         { MODKEY,                       XK_space,  fullscreen,     {0} },
-	{ MODKEY|ShiftMask,             XK_i,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_i,  	   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -87,6 +87,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
     // gaps
+	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
+	{ MODKEY,			XK_equal,  incrigaps,      {.i = +5 }},
+	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = -5 }},
+	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = +5 }},
 };
 
 /* button definitions */
