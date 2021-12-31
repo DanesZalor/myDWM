@@ -62,11 +62,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
 static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons" };
 static const char *termcmd[]  = { "st", NULL };
+static const char *screenshot[] = {"/.aur/dwm/scripts/screenshot"};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                XK_Return, spawn,          {.v = roficmd } },
-	
+	{ MODKEY,			XK_Print,  spawn, 	   {.v = termcmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 
 	// focus
