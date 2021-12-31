@@ -1,8 +1,9 @@
+#include <X11/XF86keysym.h>
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 8;       /* snap pixel */
 static const unsigned int cornerrad = 4;
 static const unsigned int gappih    = 10;
 static const unsigned int gappiv    = 10;
@@ -11,18 +12,18 @@ static const unsigned int gappov    = 20;
 static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Mono:size=12" };
+static const char *fonts[]          = { "Fira Sans Light:size=14" };
 static const char dmenufont[]       = "Source Code Pro:size=14";
 static const char col_gray1[]       = "#073642";
 static const char col_gray2[]       = "#444444";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { "#646464", "#dcdddf", "#ffffff" },
-	[SchemeSel]  = { "#141414", "#f5f6f7",  "#00a2ed" },
+	[SchemeNorm] = { "#646464", "#dcdddf", "#dcdddf" },
+	[SchemeSel]  = { "#ffffff", "#000080",  "#000080" },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4"};
+static const char *tags[] = { "一", "に", "三", "四"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -41,9 +42,9 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
-	{ "",      NULL },    /* no layout function means floating behavior */
-	{ "",      monocle },
+	{ "タイル ",      tile },    /* first entry is default */
+	{ "浮く",      NULL },    /* no layout function means floating behavior */
+	{ "浮く",      monocle },
 };
 
 /* key definitions */
@@ -54,6 +55,10 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
+#define BrtUp 	XF86XK_MonBrightnessUp
+#define BrtDown XF86XK_MonBrightnessDown
+#define VolUp	XF86XK_AudioRaiseVolume
+#define VolDown	XF86XK_AudioLowerVolume
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
@@ -62,13 +67,29 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
 static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons" };
 static const char *termcmd[]  = { "st", NULL };
-static const char *screenshot[] = {"/.aur/dwm/scripts/screenshot"};
+static const char *screenshot[] = {"screenshot"};
 
+static const char *brtUP[] = {"brightnessctl", "set", "2%+"};
+static const char *brtDN[] = {"brightnessctl", "set", "2%-"};
+static const char *volUP[] = {"/.aur/dwm/scripts/volumeUP.sh"};
+static const char *volDN[] = {"/.aur/dwm/scripts/volumeDN.sh"};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                XK_Return, spawn,          {.v = roficmd } },
-	{ MODKEY,			XK_Print,  spawn, 	   {.v = termcmd} },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	
+	// Brightness
+	{ 0,			        XK_Print,  spawn, 	   {.v = screenshot} },
+	{ 0,	                        BrtUp,     spawn, 	   {.v = brtUP} },
+	{ 0,	                        BrtDown,   spawn, 	   {.v = brtDN} },
+	// Volume
+	{ 0,				VolUp,	   spawn,	   {.v = volUP} },
+	{ 0,				VolDown,   spawn,	   {.v = volDN} },
+
+	//{ MODKEY,                       XK_b,      togglebar,      {0} },
+
+	// layout
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 
 	// focus
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
@@ -96,8 +117,8 @@ static Key keys[] = {
     // gaps
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
 	{ MODKEY,			XK_equal,  incrigaps,      {.i = +5 }},
-	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = -5 }},
-	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = +5 }},
+	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = +5 }},
+	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = -5 }},
 };
 
 /* button definitions */

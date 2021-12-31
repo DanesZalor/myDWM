@@ -1603,11 +1603,11 @@ setfocus(Client *c)
 void
 setgaps(int oh, int ov, int ih, int iv)
 {
-	oh = CLAMP(oh, 15, 45);
-	ov = CLAMP(ov, 15, 45);
+	oh = CLAMP(oh, 15, 75);
+	ov = CLAMP(ov, 15, 75);
 	
-	ih = CLAMP(ih, 5, 30);
-	iv = CLAMP(iv, 5, 30);
+	ih = CLAMP(ih, 5, 45);
+	iv = CLAMP(iv, 5, 45);
 
 	selmon->gappoh = oh;
 	selmon->gappov = ov;

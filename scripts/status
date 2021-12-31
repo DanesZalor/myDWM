@@ -1,0 +1,5 @@
+#!/bin/bash
+STRWLAN0="`iwctl station wlan0 show | grep "Connected network" | xargs | cut -c 19-`"
+STRDATE="`date +"%a %b %_d %l:%M %p"`"
+STRBRIGHTNESS="`brightnessctl | egrep "Current brightness" | cut -d '(' -f2 | cut -d ')' -f1 `"
+echo "${STRDATE} ${STRWLAN0} ${STRBRIGHTNESS}"
