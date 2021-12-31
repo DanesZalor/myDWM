@@ -11,17 +11,14 @@ static const unsigned int gappov    = 20;
 static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Source Code Pro:size=14" };
+static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char dmenufont[]       = "Source Code Pro:size=14";
 static const char col_gray1[]       = "#073642";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#002b36";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { "#515151", "#dcdddf", "#ffffff" },
-	[SchemeSel]  = { "#141414", "#cccccf",  "#00a2ed" },
+	[SchemeNorm] = { "#646464", "#dcdddf", "#ffffff" },
+	[SchemeSel]  = { "#141414", "#f5f6f7",  "#00a2ed" },
 };
 
 /* tagging */
@@ -63,11 +60,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
+static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons" };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,	                XK_Return, spawn,          {.v = dmenucmd } },
+	{ MODKEY,	                XK_Return, spawn,          {.v = roficmd } },
+	
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 
 	// focus
