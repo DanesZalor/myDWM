@@ -1,6 +1,9 @@
-Dynamic Window Manager(dwm) 6.2 with 3 patches applied:
-- fullscreen
-- vanitygaps
-- dylanaraps' [openbox rounded corner patch](https://github.com/dylanaraps/openbox-patched), adapted for dwm
+ my personalized fork of dwm forked from https://github.com/igor37/dwm-rounded-corners.
 
-![Screenshot](/screenshot.jpg)
+Patches:
+- fullscreen
+- vanity gaps
+- rounded corners
+- center
+- resize corners
+- autostart
