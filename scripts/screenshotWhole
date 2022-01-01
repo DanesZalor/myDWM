@@ -1,0 +1,5 @@
+#!/bin/bash
+import -window root ~/.local/share/dwm/temp_ss.png;
+xclip -selection clipboard -t image/png -i /home/djdols/.local/share/dwm/temp_ss.png;
+notify-send "screenshot" "Region screenshot\nCopied to clipboard" --expire-time=1000;
+

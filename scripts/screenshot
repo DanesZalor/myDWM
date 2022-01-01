@@ -1,5 +1,0 @@
-#!/bin/bash
-import ~/.config/i3/temp_ss.png;
-xclip -selection clipboard -t image/png -i /home/djdols/.config/i3/temp_ss.png;
-notify-send "Screenzip" "Copied to clipboard";
-

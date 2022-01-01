@@ -78,7 +78,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
 static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons" };
 static const char *termcmd[]  = { "st", NULL };
-static const char *screenshot[] = {"screenshot"};
+static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion"};
 
 static const char *brtUP[] = {"brightnessctl", "set", "2%+"};
 static const char *brtDN[] = {"brightnessctl", "set", "2%-"};
@@ -108,7 +108,7 @@ static Key keys[] = {
 
 	// layout
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
 
 	// focus
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
