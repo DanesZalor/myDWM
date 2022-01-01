@@ -1,5 +1,31 @@
 #!/bin/bash
-STRWLAN0="`iwctl station wlan0 show | grep "Connected network" | xargs | cut -c 19-`"
-STRDATE="`date +"%a %b %_d %l:%M %p"`"
-STRBRIGHTNESS="`brightnessctl | egrep "Current brightness" | cut -d '(' -f2 | cut -d ')' -f1 `"
-echo "${STRDATE} ${STRWLAN0} ${STRBRIGHTNESS}"
+
+STRWLAN0="✈ No WiFi"
+if [ "`iwctl device wlan0 show | grep Powered | cut -c 32- | xargs`" = "on" ]; then
+	if [ "`iwctl station wlan0 show | egrep "State(.*)(dis)?connected$" | cut -c 20- | xargs `" = "connected" ]; then
+		STRWLAN0="ﴽ  `iwctl station wlan0 show  | grep AverageRSSI | cut -c 32-40 | xargs`dBm"
+	else	
+		STRWLAN0="ﴽ  No Conns"
+	fi
+fi
+SPR="           "
+STRWLAN0="${STRWLAN0}${SPR:${#STRWLAN0}}"
+# ------- volume --------------
+STRVOL="`pactl get-sink-volume @DEFAULT_SINK@ | grep Volume: | cut -f2  -d '/' | xargs`"
+if [ "$STRVOL" = "0%"  ]; then
+	STRVOL="ﳌ  ${STRVOL}" 
+else
+	STRVOL="ﱛ ${STRVOL}" # ﳌ    ﱛ  
+fi
+SPR="      "
+STRVOL="${STRVOL}${SPR:${#STRVOL}}"
+
+STRDATE="`date +"%I:%M %p %a"`"
+
+# --------- brightness -------------
+STRBRT="☀ `brightnessctl | egrep "Current brightness" | cut -d '(' -f2 | cut -d ')' -f1 `"
+SPR="      "
+STRBRT="${STRBRT}${SPR:${#STRBRT}}"
+
+STATUS="${STRVOL} ${STRBRT} ${STRWLAN0} | ${STRDATE} "
+xsetroot -name "${STATUS}"
