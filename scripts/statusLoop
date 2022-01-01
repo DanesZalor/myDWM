@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while [ true ]
+do
+	/.aur/dwm/scripts/status
+	sleep 1
+done
+exit

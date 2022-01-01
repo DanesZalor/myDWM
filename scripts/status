@@ -27,5 +27,5 @@ STRBRT="☀ `brightnessctl | egrep "Current brightness" | cut -d '(' -f2 | cut -
 SPR="      "
 STRBRT="${STRBRT}${SPR:${#STRBRT}}"
 
-STATUS="${STRVOL} ${STRBRT} ${STRWLAN0} | ${STRDATE} "
+STATUS="⋮  ${STRVOL} ${STRBRT} ${STRWLAN0}⋮  ${STRDATE} ⋮"
 xsetroot -name "${STATUS}"

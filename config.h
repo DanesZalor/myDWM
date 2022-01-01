@@ -68,6 +68,8 @@ static const Layout layouts[] = {
 #define BrtDown XF86XK_MonBrightnessDown
 #define VolUp	XF86XK_AudioRaiseVolume
 #define VolDown	XF86XK_AudioLowerVolume
+#define Airplane XF86XK_RFKill
+
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
@@ -82,9 +84,17 @@ static const char *brtUP[] = {"brightnessctl", "set", "2%+"};
 static const char *brtDN[] = {"brightnessctl", "set", "2%-"};
 static const char *volUP[] = {"/.aur/dwm/scripts/volumeUP.sh"};
 static const char *volDN[] = {"/.aur/dwm/scripts/volumeDN.sh"};
+static const char *dwmstatus[] = {"/.aur/dwm/scripts/status"};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                XK_Return, spawn,          {.v = roficmd } },
+	
+	// keys that trigger updating status bar
+	{ 0,	                        BrtUp,     spawn, 	   {.v = dwmstatus} },
+	{ 0,	                        BrtDown,   spawn, 	   {.v = dwmstatus} },
+	{ 0,	                        VolUp,     spawn, 	   {.v = dwmstatus} },
+	{ 0,	                        VolDown,   spawn, 	   {.v = dwmstatus} },
+	{ 0,	                        Airplane,  spawn, 	   {.v = dwmstatus} },
 	
 	// Brightness
 	{ 0,			        XK_Print,  spawn, 	   {.v = screenshot} },
