@@ -36,12 +36,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       1,           1,           -1 },
-	{ "st-256color",NULL,     NULL,       1 << 8,       1,           1,           -1 },
-	{ "thunar",     NULL,     NULL,       1 << 8,       1,           1,           -1 },
-	{ "Thunar",     NULL,     NULL,       1 << 8,       1,           1,           -1 },
-	{ "Leafpad",    NULL,     NULL,       1 << 8,       1,           1,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            1,           0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       1,           0,           -1 },
+	{ "st-256color",NULL,     NULL,       1 << 8,       1,           0,           -1 },
+	{ "thunar",     NULL,     NULL,       1 << 8,       1,           0,           -1 },
+	{ "Thunar",     NULL,     NULL,       1 << 8,       1,           0,           -1 },
+	{ "Leafpad",    NULL,     NULL,       1 << 8,       1,           0,           -1 },
 };
 
 /* layout(s) */
@@ -76,15 +76,15 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
-static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons" };
+static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion"};
+static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion", NULL};
 
-static const char *brtUP[] = {"brightnessctl", "set", "2%+"};
-static const char *brtDN[] = {"brightnessctl", "set", "2%-"};
-static const char *volUP[] = {"/.aur/dwm/scripts/volumeUP.sh"};
-static const char *volDN[] = {"/.aur/dwm/scripts/volumeDN.sh"};
-static const char *dwmstatus[] = {"/.aur/dwm/scripts/status"};
+static const char *brtUP[] = {"brightnessctl", "set", "2%+", NULL};
+static const char *brtDN[] = {"brightnessctl", "set", "2%-", NULL};
+static const char *volUP[] = {"/.aur/dwm/scripts/volumeUP.sh", NULL};
+static const char *volDN[] = {"/.aur/dwm/scripts/volumeDN.sh", NULL};
+static const char *dwmstatus[] = {"/.aur/dwm/scripts/status",NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                XK_Return, spawn,          {.v = roficmd } },
