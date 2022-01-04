@@ -19,9 +19,6 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 36;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fira Mono:size=14" };
-static const char dmenufont[]       = "Source Code Pro:size=14";
-static const char col_gray1[]       = "#073642";
-static const char col_gray2[]       = "#444444";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
@@ -52,9 +49,9 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "タイル ",      tile },    /* first entry is default */
-	{ "浮く  ",      NULL },    /* no layout function means floating behavior */
-	{ "浮く  ",      monocle },
+	{ "⿰",      tile },    /* first entry is default */
+	{ "⿻",      NULL },    /* no layout function means floating behavior */
+	{ "⿴",      monocle },
 };
 
 /* key definitions */
@@ -76,8 +73,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
-static const char *roficmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons", NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
+static const char *dmenucmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion", NULL};
 
@@ -88,7 +85,7 @@ static const char *volDN[] = {"/.aur/dwm/scripts/volumeDN.sh", NULL};
 static const char *dwmstatus[] = {"/.aur/dwm/scripts/status",NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,	                XK_Return, spawn,          {.v = roficmd } },
+	{ MODKEY,	                XK_Return, spawn,          {.v = dmenucmd } },
 	
 	// keys that trigger updating status bar
 	{ 0,	                        BrtUp,     spawn, 	   {.v = dwmstatus} },
@@ -98,24 +95,18 @@ static Key keys[] = {
 	{ 0,	                        Airplane,  spawn, 	   {.v = dwmstatus} },
 	
 	// Brightness
-	{ 0,			        XK_Print,  spawn, 	   {.v = screenshot} },
+	{ 0,			        		XK_Print,  spawn, 	   {.v = screenshot} },
 	{ 0,	                        BrtUp,     spawn, 	   {.v = brtUP} },
 	{ 0,	                        BrtDown,   spawn, 	   {.v = brtDN} },
 	// Volume
 	{ 0,				VolUp,	   spawn,	   {.v = volUP} },
 	{ 0,				VolDown,   spawn,	   {.v = volDN} },
 
-	//{ MODKEY,                       XK_b,      togglebar,      {0} },
-
-	// layout
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
-
 	// focus
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY,			XK_Tab,	   focusstack,	   {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_Tab,	   zoom,	   {0}},
+	{ MODKEY,						XK_Tab,	   focusstack,	   {.i = +1 } },
+	{ MODKEY|ShiftMask,				XK_Tab,	   zoom,	   {0}},
 
 	{ MODKEY|ShiftMask,             XK_Up,     incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incnmaster,     {.i = -1 } },
@@ -123,13 +114,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
-	//{ MODKEY,                       XK_Tab,    zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
         { MODKEY,                       XK_space,  fullscreen,     {0} },
-	//{ MODKEY|ShiftMask,             XK_i,  	   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -146,15 +133,10 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	//{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
