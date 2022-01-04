@@ -2089,6 +2089,13 @@ spawn(const Arg *arg)
 {
 	if (arg->v == dmenucmd)
 		dmenumon[0] = '0' + selmon->num;
+	
+	/* if spawning the stuff u get for pressing volume or backlight buttons, update the status bar*/
+	else if (arg->v == brtUP || arg->v == brtDN || arg->v == volUP || arg->v == volDN){
+		Arg dwmarg = {0};
+		dwmarg.v = dwmstatus;
+		spawn(&dwmarg);
+	}
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));

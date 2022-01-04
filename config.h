@@ -18,7 +18,7 @@ static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 36;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Fira Mono:size=14" };
+static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
@@ -58,9 +58,7 @@ static const Layout layouts[] = {
 #define MODKEY    Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, 
 
 #define BrtUp 	XF86XK_MonBrightnessUp
 #define BrtDown XF86XK_MonBrightnessDown
@@ -81,26 +79,19 @@ static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion", NULL};
 static const char *brtUP[] = {"brightnessctl", "set", "2%+", NULL};
 static const char *brtDN[] = {"brightnessctl", "set", "2%-", NULL};
 static const char *volUP[] = {"/.aur/dwm/scripts/volumeUP.sh", NULL};
-static const char *volDN[] = {"/.aur/dwm/scripts/volumeDN.sh", NULL};
+static const char *volDN[] = {"pactl","set-sink-volume","@DEFAULT_SINK@","-5%", NULL};
 static const char *dwmstatus[] = {"/.aur/dwm/scripts/status",NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,	                XK_Return, spawn,          {.v = dmenucmd } },
-	
-	// keys that trigger updating status bar
-	{ 0,	                        BrtUp,     spawn, 	   {.v = dwmstatus} },
-	{ 0,	                        BrtDown,   spawn, 	   {.v = dwmstatus} },
-	{ 0,	                        VolUp,     spawn, 	   {.v = dwmstatus} },
-	{ 0,	                        VolDown,   spawn, 	   {.v = dwmstatus} },
-	{ 0,	                        Airplane,  spawn, 	   {.v = dwmstatus} },
+	{ MODKEY,	                	XK_Return, spawn,          {.v = dmenucmd } },
 	
 	// Brightness
 	{ 0,			        		XK_Print,  spawn, 	   {.v = screenshot} },
 	{ 0,	                        BrtUp,     spawn, 	   {.v = brtUP} },
 	{ 0,	                        BrtDown,   spawn, 	   {.v = brtDN} },
 	// Volume
-	{ 0,				VolUp,	   spawn,	   {.v = volUP} },
-	{ 0,				VolDown,   spawn,	   {.v = volDN} },
+	{ 0,							VolUp,	   spawn,	   {.v = volUP} },
+	{ 0,							VolDown,   spawn,	   {.v = volDN} },
 
 	// focus
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
@@ -115,7 +106,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-        { MODKEY,                       XK_space,  fullscreen,     {0} },
+    { MODKEY,                       XK_space,  fullscreen,     {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -132,7 +123,7 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	//{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	//{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
