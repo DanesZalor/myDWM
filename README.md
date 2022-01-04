@@ -7,3 +7,5 @@ Patches:
 - center
 - resize corners
 - autostart
+- barheight
+- systray
