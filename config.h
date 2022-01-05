@@ -78,9 +78,9 @@ static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion", NULL};
 
 static const char *brtUP[] = {"brightnessctl", "set", "2%+", NULL};
 static const char *brtDN[] = {"brightnessctl", "set", "2%-", NULL};
-static const char *volUP[] = {"/.aur/dwm/scripts/volumeUP.sh", NULL};
+static const char *volUP[] = {"/.aur/suckless/dwm/scripts/volumeUP.sh", NULL};
 static const char *volDN[] = {"pactl","set-sink-volume","@DEFAULT_SINK@","-5%", NULL};
-static const char *dwmstatus[] = {"/.aur/dwm/scripts/status",NULL};
+static const char *dwmstatus[] = {"/.aur/suckless/dwm/scripts/status",NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                	XK_Return, spawn,          {.v = dmenucmd } },
