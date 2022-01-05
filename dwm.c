@@ -1171,6 +1171,10 @@ killclient(const Arg *arg)
 		XSetErrorHandler(xerror);
 		XUngrabServer(dpy);
 	}
+
+	// decrease nmaster of selmon
+	selmon->nmaster = CLAMP(selmon->nmaster - 1, 1, getselmonclients()-1);
+	arrange(selmon);
 }
 
 void
