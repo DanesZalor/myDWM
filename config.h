@@ -71,10 +71,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-//static const char *dmenucmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons", NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
+//static const char *dmenucmd[] = { "rofi","-i","-show","drun","-modi","drun","-show-icons", NULL };
+static const char *dmenucmd[] = { "/.aur/suckless/dwm/scripts/rofilaunch", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion", NULL};
+static const char *screenshot[] = {"/.aur/suckless/dwm/scripts/screenshotRegion", NULL};
 
 static const char *brtUP[] = {"brightnessctl", "set", "2%+", NULL};
 static const char *brtDN[] = {"brightnessctl", "set", "2%-", NULL};

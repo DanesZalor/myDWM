@@ -1,0 +1,57 @@
+/**
+ * ROFI Color theme
+ * User: Daniel James Dolor
+ * Copyright: Daniel James Dolor
+ */
+// sudo cp win95rofi.rasi /usr/share/rofi/themes/win95rofi.rasi
+* {
+
+    background-color: #00000000;
+    font:            "Fira Mono 12";
+}
+window {
+    background-color:      #dcdddf;
+    anchor:     north west;
+    location:   north west;
+    y-offset: 38px;
+    x-offset: 2px;
+    width:      20%;
+    children:   [ horibox ];
+}
+horibox {
+    padding: 5px;
+    orientation: horizontal;
+    children:   [ prompt, entry, listview ];
+}
+listview {
+    layout:     vertical;
+    spacing:    5px;
+    lines:      10;
+}
+
+prompt {
+	font: "Fira Sans Bold 24";
+	width: 0px;
+	background-color: #949596;
+	text-color: #dcdddf;
+}
+entry {
+    text-color: #00000000;
+    expand:     false;
+    width:      0px;
+}
+element-text {
+ background-color: inherit;
+ text-color: inherit;
+}
+element {
+ padding: 4px;
+ text-color:           #141414;
+}
+
+element-icon { size: 24px ; }
+element selected {
+	text-color: #ffffff;
+    background-color: #000080;
+    
+}
