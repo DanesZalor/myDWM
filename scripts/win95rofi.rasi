@@ -15,13 +15,18 @@ window {
     location:   north west;
     y-offset: 38px;
     x-offset: 2px;
-    width:      20%;
+    width:      25%;
     children:   [ horibox ];
 }
 horibox {
     padding: 5px;
     orientation: horizontal;
-    children:   [ prompt, entry, listview ];
+    children:   [ prompt, sidebox];
+}
+sidebox {
+    orientation: vertical;
+    children: [ listview, entry ];
+    padding: 0px 0px 0px 3px;
 }
 listview {
     layout:     vertical;
@@ -31,25 +36,28 @@ listview {
 
 prompt {
 	font: "Fira Sans Bold 24";
-	width: 0px;
 	background-color: #949596;
-	text-color: #dcdddf;
+	text-color: #ecedef;
 }
 entry {
-    text-color: #00000000;
+    background-color: #ecedef;
+    text-color: #444444;
     expand:     false;
-    width:      0px;
+    margin: 5px 0px 0px 0px;
+    padding: 10px;
 }
 element-text {
- background-color: inherit;
- text-color: inherit;
+    background-color: inherit;
+    text-color: inherit;
+    padding: 5px 0px 0px 0px;
 }
+element-icon { size: 24px ; padding: 0px 5px 0px 0px;}
 element {
  padding: 4px;
  text-color:           #141414;
 }
 
-element-icon { size: 24px ; }
+
 element selected {
 	text-color: #ffffff;
     background-color: #000080;
