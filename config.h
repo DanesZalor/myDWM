@@ -71,8 +71,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#cccccf", "-nf", "#141414", "-sb", "#000080", "-sf", "#dcdddf", NULL };
-static const char *dmenucmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
+//static const char *dmenucmd[] = { "rofi", "-i", "-show" ,"drun", "-modi","drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *screenshot[] = {"/.aur/dwm/scripts/screenshotRegion", NULL};
 
