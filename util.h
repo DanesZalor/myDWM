@@ -2,7 +2,7 @@
 
 #define MAX(A, B)               ((A) > (B) ? (A) : (B))
 #define MIN(A, B)               ((A) < (B) ? (A) : (B))
-#define CLAMP(X, A, B)		MAX(MIN( (X), (B) ), (A) )
+#define CLAMP(X, A, B)		    MAX(MIN( (X), (B) ), (A) )
 #define BETWEEN(X, A, B)        ((A) <= (X) && (X) <= (B))
 
 void die(const char *fmt, ...);
