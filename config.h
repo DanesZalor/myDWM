@@ -106,7 +106,7 @@ static Key keys[] = {
 
 	{ MODKEY,						XK_t,	   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-    { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
+    { MODKEY,             			XK_space,  togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ ControlMask|ShiftMask,		XK_q,	   quit,		   {0} },
 
@@ -118,7 +118,7 @@ static Key keys[] = {
     
 	// gaps
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
-	{ MODKEY,			XK_equal,  incrigaps,      {.i = +5 }},
+	{ MODKEY,				XK_equal,  incrigaps,      {.i = +5 }},
 	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = +5 }},
 	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = -5 }},
 };
