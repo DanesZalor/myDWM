@@ -9,3 +9,4 @@ Patches:
 - autostart
 - barheight
 - systray
+- actual fullscreen
