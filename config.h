@@ -22,7 +22,7 @@ static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
-	[SchemeSel]  = { "#ffffff", "#000080",  "#000080" },
+	[SchemeSel]  = { "#ffffff", "#000080", "#000080" },
 };
 
 /* tagging */
@@ -51,7 +51,6 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "⿰",      tile },    /* first entry is default */
 	{ "⿻",      NULL },    /* no layout function means floating behavior */
-	{ "⿴",      monocle },
 };
 
 /* key definitions */
@@ -102,19 +101,22 @@ static Key keys[] = {
 
 	{ MODKEY|ShiftMask,             XK_Up,     incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incnmaster,     {.i = -1 } },
-
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
+	{ MODKEY,						XK_t,	   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-    { MODKEY,                       XK_space,  fullscreen,     {0} },
+    { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ ControlMask|ShiftMask,		XK_q,	   quit,		   {0} },
+
+	// tags
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-    // gaps
+    
+	// gaps
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
 	{ MODKEY,			XK_equal,  incrigaps,      {.i = +5 }},
 	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = +5 }},
@@ -126,6 +128,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },

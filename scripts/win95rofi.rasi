@@ -3,7 +3,7 @@
  * User: Daniel James Dolor
  * Copyright: Daniel James Dolor
  */
-// sudo cp win95rofi.rasi /usr/share/rofi/themes/win95rofi.rasi
+// sudo cp /.aur/suckless/dwm/scripts/win95rofi.rasi /usr/share/rofi/themes/win95rofi.rasi
 * {
 
     background-color: #00000000;
@@ -31,7 +31,7 @@ sidebox {
 listview {
     layout:     vertical;
     spacing:    5px;
-    lines:      10;
+    lines:      8;
 }
 
 prompt {
@@ -40,7 +40,7 @@ prompt {
 	text-color: #ecedef;
 }
 entry {
-    background-color: #ecedef;
+    background-color: #dcdddf;
     text-color: #444444;
     expand:     false;
     margin: 5px 0px 0px 0px;
