@@ -17,6 +17,7 @@ static const unsigned int gappov    = 20;
 static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int focusonwheel       = 0;
 static const int user_bh            = 36;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {

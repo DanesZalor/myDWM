@@ -10,3 +10,4 @@ Patches:
 - barheight
 - systray
 - actual fullscreen
+- focusonclick
