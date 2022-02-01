@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "Start","一", "二", "三", "四"};
+static const char *tags[] = { "一", "二", "三", "四"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -113,10 +113,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
 	// tags
-	TAGKEYS(                        XK_1,                      1)
-	TAGKEYS(                        XK_2,                      2)
-	TAGKEYS(                        XK_3,                      3)
-	TAGKEYS(                        XK_4,                      4)
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
     
 	// gaps
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
