@@ -23,11 +23,11 @@ static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
-	[SchemeSel]  = { "#ffffff", "#000080", "#000080" },
+	[SchemeSel]  = { "#383838", "#cccdcf", "#dcdddf" },
 };
 
 /* tagging */
-static const char *tags[] = { "一", "二", "三", "四"};
+static const char *tags[] = { "Start","一", "二", "三", "四"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -57,6 +57,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY    Mod4Mask
+#define ALTKEY	  Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, 
@@ -83,6 +84,7 @@ static const char *brtDN[] = {"brightnessctl", "set", "2%-", NULL};
 static const char *volUP[] = {"/.aur/suckless/dwm/scripts/volumeUP.sh", NULL};
 static const char *volDN[] = {"pactl","set-sink-volume","@DEFAULT_SINK@","-5%", NULL};
 static const char *dwmstatus[] = {"/.aur/suckless/dwm/scripts/status",NULL};
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,	                	XK_Return, spawn,          {.v = dmenucmd } },
@@ -96,10 +98,9 @@ static Key keys[] = {
 	{ 0,							VolDown,   spawn,	   {.v = volDN} },
 
 	// focus
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY,						XK_Tab,	   focusstack,	   {.i = +1 } },
-	{ MODKEY|ShiftMask,				XK_Tab,	   zoom,	   {0}},
+	{ ALTKEY,						XK_Tab,	   focusstack,	   {.i = +1 } },
+	{ ALTKEY|ShiftMask,				XK_Tab,	   focusstack,	   {.i = -1 } },
+	{ ALTKEY,						XK_space,  zoom,		   {0} },
 
 	{ MODKEY|ShiftMask,             XK_Up,     incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incnmaster,     {.i = -1 } },
@@ -110,13 +111,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
     { MODKEY,             			XK_space,  togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ ControlMask|ShiftMask,		XK_q,	   quit,		   {0} },
 
 	// tags
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_1,                      1)
+	TAGKEYS(                        XK_2,                      2)
+	TAGKEYS(                        XK_3,                      3)
+	TAGKEYS(                        XK_4,                      4)
     
 	// gaps
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
@@ -133,7 +133,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkRootWin,		0,				Button1,		spawn,			{.v = dmenucmd}},
+	//{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	//{ ClkRootWin,		0,				Button1,		spawn,			{.v = dmenucmd}},
 };
 
