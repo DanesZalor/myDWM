@@ -23,7 +23,7 @@ static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#8c8d8f" },
-	[SchemeSel]  = { "#383838", "#cccdcf", "##2323a3" },
+	[SchemeSel]  = { "#383838", "#cccdcf", "#2323a3" },
 };
 
 /* tagging */
@@ -133,7 +133,7 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	//{ ClkTagBar,            0,              Button1,        view,           {0} },
 	//{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	//{ ClkRootWin,		0,				Button1,		spawn,			{.v = dmenucmd}},
 };
