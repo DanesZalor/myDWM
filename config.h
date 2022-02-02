@@ -2,14 +2,14 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int snap      = 8;       /* snap pixel */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-static const unsigned int cornerrad = 4;
+static const unsigned int cornerrad = 0;
 static const unsigned int gappih    = 20;
 static const unsigned int gappiv    = 20;
 static const unsigned int gappoh    = 40;
@@ -22,8 +22,8 @@ static const int user_bh            = 36;        /* 0 means that dwm will calcul
 static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
-	[SchemeSel]  = { "#383838", "#cccdcf", "#dcdddf" },
+	[SchemeNorm] = { "#383838", "#dcdddf", "#8c8d8f" },
+	[SchemeSel]  = { "#383838", "#cccdcf", "##2323a3" },
 };
 
 /* tagging */
@@ -42,6 +42,7 @@ static const Rule rules[] = {
 	{ "thunar",     NULL,     NULL,       1 << 8,       1,           0,           -1 },
 	{ "Thunar",     NULL,     NULL,       1 << 8,       1,           0,           -1 },
 	{ "Leafpad",    NULL,     NULL,       1 << 8,       1,           0,           -1 },
+	{ "steam_app_755800", NULL, NULL,	1<<8,	    1,		 1, 		-1},
 };
 
 /* layout(s) */
