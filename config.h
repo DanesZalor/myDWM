@@ -22,6 +22,7 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
 	[SchemeSel]  = { "#383838", "#cccdcf", "#dcdddf" },
+	[SchemeMenu] = { "#dcdddf", "#000080", "#dcdddf" },
 };
 
 /* tagging */
