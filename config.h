@@ -6,14 +6,12 @@ static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 5;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-static const unsigned int cornerrad = 5;
-static const unsigned int gappih    = 10;
-static const unsigned int gappiv    = 10;
-static const unsigned int gappoh    = 20;
-static const unsigned int gappov    = 20;
+static const unsigned int cornerrad = 2;
+static const unsigned int gappih = 3,gappiv = 3;
+static const unsigned int gappoh = 5,gappov = 5;
 static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -100,15 +98,14 @@ static Key keys[] = {
 
 	// focus
 	{ ALTKEY,						XK_Tab,	   focusstack,	   {.i = +1 } },
-	{ ALTKEY|ShiftMask,				XK_Tab,	   focusstack,	   {.i = -1 } },
-	{ ALTKEY,						XK_space,  zoom,		   {0} },
+	{ ALTKEY|ShiftMask,				XK_Tab,    zoom,		   {0} },
 
 	{ MODKEY|ShiftMask,             XK_Up,     incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
-	{ MODKEY,						XK_t,	   setlayout,      {0} },
+	{ MODKEY,						XK_5,	   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
     { MODKEY,             			XK_space,  togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -118,13 +115,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-    
-	// gaps
-	/*
-	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
-	{ MODKEY,				XK_equal,  incrigaps,      {.i = +5 }},
-	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = +5 }},
-	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = -5 }},*/
+
+
 };
 
 /* button definitions */
