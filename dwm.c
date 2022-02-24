@@ -2082,6 +2082,7 @@ toggletag(const Arg *arg)
 void
 toggleview(const Arg *arg)
 {
+	if(arg->ui==1)return;
 	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
 
 	if (newtagset) {
@@ -2512,6 +2513,12 @@ updatewmhints(Client *c)
 void
 view(const Arg *arg)
 {
+	if(arg->ui==1){
+		Arg spawndmenu;
+		spawndmenu.v = dmenucmd;
+		spawn(&spawndmenu);
+		return;
+	}
 	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
 		return;
 	selmon->seltags ^= 1; /* toggle sel tagset */
