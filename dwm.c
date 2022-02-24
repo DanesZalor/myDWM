@@ -315,7 +315,6 @@ static Atom wmatom[WMLast], netatom[NetLast], xatom[XLast];
 static int running = 1;
 static Cur *cursor[CurLast];
 static Clr **scheme;
-static Clr **tagscheme;
 static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
@@ -809,6 +808,7 @@ dirtomon(int dir)
 	return m;
 }
 
+char isStartBlue = 0;
 void
 drawbar(Monitor *m)
 {
@@ -1887,6 +1887,11 @@ setup(void)
 	/* init system tray */
 	updatesystray();
 	/* init bars */
+
+	// focus workspace1
+	Arg focusWorkspace1; focusWorkspace1.ui = 2;
+	view(&focusWorkspace1);
+
 	updatebars();
 	updatestatus();
 	/* supporting window for NetWMCheck */
@@ -1955,8 +1960,9 @@ sigchld(int unused)
 void
 spawn(const Arg *arg)
 {
-	if (arg->v == dmenucmd)
+	if (arg->v == dmenucmd){
 		dmenumon[0] = '0' + selmon->num;
+	}
 	
 	/* if spawning the stuff u get for pressing volume or backlight buttons, update the status bar*/
 	else if (arg->v == brtUP || arg->v == brtDN || arg->v == volUP || arg->v == volDN){

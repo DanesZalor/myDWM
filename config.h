@@ -16,17 +16,17 @@ static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static const int user_bh            = 36;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 40;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
 	[SchemeSel]  = { "#383838", "#cccdcf", "#dcdddf" },
-	[SchemeMenu] = { "#dcdddf", "#000080", "#dcdddf" },
+	[SchemeMenu] = { "#383838", "#dcdddf", "#dcdddf" },
 };
 
 /* tagging */
-static const char *tags[] = { "START","一", "二", "三", "四" };
+static const char *tags[] = { "ﰪ Start ","一", "二", "三", "四" };
 
 static const Rule rules[] = {
 	/* xprop(1):
