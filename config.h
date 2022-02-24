@@ -2,18 +2,18 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-static const unsigned int cornerrad = 0;
-static const unsigned int gappih    = 20;
-static const unsigned int gappiv    = 20;
-static const unsigned int gappoh    = 40;
-static const unsigned int gappov    = 40;
+static const unsigned int cornerrad = 5;
+static const unsigned int gappih    = 10;
+static const unsigned int gappiv    = 10;
+static const unsigned int gappoh    = 20;
+static const unsigned int gappov    = 20;
 static const int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -22,8 +22,8 @@ static const int user_bh            = 36;        /* 0 means that dwm will calcul
 static const char *fonts[]          = { "Fira Mono:size=12" };
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { "#383838", "#dcdddf", "#8c8d8f" },
-	[SchemeSel]  = { "#383838", "#cccdcf", "#2323a3" },
+	[SchemeNorm] = { "#383838", "#dcdddf", "#dcdddf" },
+	[SchemeSel]  = { "#383838", "#cccdcf", "#dcdddf" },
 };
 
 /* tagging */
@@ -120,10 +120,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
     
 	// gaps
+	/*
 	{ MODKEY,		        XK_minus,  incrigaps,      {.i = -5 }},
 	{ MODKEY,				XK_equal,  incrigaps,      {.i = +5 }},
 	{ MODKEY|ShiftMask,		XK_minus,  incrogaps,      {.i = +5 }},
-	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = -5 }},
+	{ MODKEY|ShiftMask,		XK_equal,  incrogaps,      {.i = -5 }},*/
 };
 
 /* button definitions */
@@ -133,8 +134,8 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	//{ ClkTagBar,            0,              Button1,        view,           {0} },
-	//{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	//{ ClkRootWin,		0,				Button1,		spawn,			{.v = dmenucmd}},
 };
 
