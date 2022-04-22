@@ -2713,6 +2713,10 @@ main(int argc, char *argv[])
 #endif /* __OpenBSD__ */
 	scan();
 	runautostart();
+
+	// set layout to floating
+	setlayout(NULL);
+
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
