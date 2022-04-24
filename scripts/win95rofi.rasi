@@ -7,7 +7,7 @@
 * {
 
     background-color: #00000000;
-    font:            "Fira Mono 14";
+    font:            "Fira Mono 12";
 }
 window {
     background-color:      #dcdddf;

@@ -11,3 +11,4 @@ Patches:
 - systray
 - actual fullscreen
 - focusonclick
+- steam

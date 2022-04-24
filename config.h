@@ -34,14 +34,14 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",       NULL,       NULL,       0,            1,           0,           -1 },
+	{ "Gimp",       NULL,       NULL,       1<<8,            1,           0,           -1 },
 	{ "Navigator",  NULL,     NULL,      1 << 8,       1,           0,           -1 },
 	{ "Waterfox",   NULL,     NULL,      1 << 8,       1,           0,           -1 },
-	{ "st-256color",NULL,     NULL,       1 << 8,       1,           0,           -1 },
-	{ "thunar",     NULL,     NULL,       1 << 8,       1,           0,           -1 },
-	{ "Thunar",     NULL,     NULL,       1 << 8,       1,           0,           -1 },
-	{ "Leafpad",    NULL,     NULL,       1 << 8,       1,           0,           -1 },
+	{ "st-256color",NULL,     NULL,       1<<8,       1,           0,           -1 },
+	{ "leafpad",    NULL,     NULL,       1 << 8,       1,           0,           -1 },
 	{ "steam_app_755800", NULL, NULL,	1<<8,	    1,		 1, 		-1},
+	{ "Cairo-dock", NULL, NULL,	0b11111,	    1,		 1, 		-1},
+	
 };
 
 /* layout(s) */
@@ -60,7 +60,8 @@ static const Layout layouts[] = {
 #define ALTKEY	  Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, 
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 #define BrtUp 	XF86XK_MonBrightnessUp
 #define BrtDown XF86XK_MonBrightnessDown
@@ -98,8 +99,8 @@ static Key keys[] = {
 	{ 0,							VolDown,   spawn,	   {.v = volDN} },
 
 	// focus
-	{ ALTKEY,						XK_Tab,	   focusstack,	   {.i = +1 } },
-	{ ALTKEY|ShiftMask,				XK_Tab,    zoom,		   {0} },
+	{ MODKEY,						XK_Tab,	   focusstack,	   {.i = +1 } },
+	{ MODKEY|ShiftMask,				XK_Tab,    zoom,		   {0} },
 
 	{ MODKEY|ShiftMask,             XK_Up,     incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incnmaster,     {.i = -1 } },
